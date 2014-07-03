@@ -125,7 +125,7 @@ class Drupal7Plugin(p.SingletonPlugin):
             user = None
         if user:
             # update the user in ckan if not matching drupal data
-            if (user_data.mail != user['email']
+            if (hashlib.md5(user_data.mail).hexdigest() != user['email_hash']
                     or bool(user_data.uid) != user['sysadmin']):
                 user['email'] = user_data.mail
                 user['sysadmin'] = bool(user_data.uid)
