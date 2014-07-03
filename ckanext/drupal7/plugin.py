@@ -137,7 +137,7 @@ class Drupal7Plugin(p.SingletonPlugin):
                     'password': self.make_password(),
                     'sysadmin': bool(user_data.uid),}
             user = p.toolkit.get_action('user_create')({'ignore_auth': True}, user)
-            p.toolkit.c.user = user['name']
+        p.toolkit.c.user = user['name']
 
     def abort(self, status_code, detail, headers, comment):
         # HTTP Status 401 causes a login redirect.  We need to prevent this
